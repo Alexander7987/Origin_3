@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Singer (
 );
 
 
---После написали симбиоз двух таблиц Певцов и Жанров, показывая разносторонность певцов
+--После написали симбиоз двух таблиц Певцов и Жанров, показывая разносторонность певцов. Это вариант "многие ко многим"
 CREATE TABLE IF NOT EXISTS Singer_Genre (
 	Pseudonym_name text not null references Singer(Pseudonym),
 	Genre_name text not null references Genre(Name),
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Albums (
 );
 
 
---После написали симбиоз двух таблиц Альбомов и Певцов, показывая разносторонность
+--После написали симбиоз двух таблиц Альбомов и Певцов, показывая разносторонность.  Это вариант "многие ко многим"
 CREATE TABLE IF NOT EXISTS Albums_Singer (
 	Album_name text not null references Albums(Name),
 	Pseudonym_name text not null references Singer(Pseudonym),
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS Albums_Singer (
 );
 
 
--- Симбиоз Трека и Альбома, только каждый трек принадлежит строго одному альбому
+-- Симбиоз Трека и Альбома, только каждый трек принадлежит строго одному альбому.  Это вариант "один ко многим"
 CREATE TABLE IF NOT EXISTS Tracks (
 	Name text primary key,
 	Time text,
