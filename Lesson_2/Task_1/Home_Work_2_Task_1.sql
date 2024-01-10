@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Albums_Singer (
 	constraint pkk UNIQUE (Album_name, Pseudonym_name) -- чтобы не было повторений комбинаций
 );
 
-
+------------------------------------------------------------------------------------------------------
 -- Симбиоз Трека и Альбома, только каждый трек принадлежит строго одному альбому.  Это вариант "один ко многим"
 CREATE TABLE IF NOT EXISTS Tracks (
 	Name text primary key,
@@ -41,13 +41,18 @@ CREATE TABLE IF NOT EXISTS Tracks (
 	Album_name text not null references Albums(Name),
 	constraint pkkk UNIQUE (Name, Album_name) -- чтобы не было повторений комбинаций
 );
+-------------------------------------------------------------------------------------------------------
 
+--Сначала отдельно создали таблицу Сборников с обязательным ограничением целостности primary key для дальнейшего использования references
 create table if not exists Collections (
-    Name text,
-    Year text,
-    Tracks_name text not null references Tracks(Name),
-    Album_name text not null references Albums(Name),
-    constraint pkkkk unique (Name, Tracks_name),
-    constraint pkkkkk unique (Tracks_name, Album_name)
+    Name text primary key,
+    Year text
 );
 
+
+--После написали симбиоз двух таблиц Коллекций и Треков, показывая разносторонность.  Это вариант "многие ко многим"
+create table if not exists Collections_Tracks (
+    Collections_name text not null references Collections(Name),
+	Tracks_name text not null references Tracks(Name),
+	constraint pkkkkk UNIQUE (Collections_name, Tracks_name) -- чтобы не было повторений комбинаций
+);
