@@ -58,6 +58,7 @@ select album_name, count(*) from tracks
 group by album_name
 having count(*) = (select count(*) from tracks
                    group by album_name
+                   order by count(*) asc 
                    limit 1);
 
 
