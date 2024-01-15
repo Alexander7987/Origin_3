@@ -1,0 +1,9 @@
+delete from albums_singer;
+delete from singer_genre;
+delete from singer;
+delete from genre;
+delete from albums_singer;
+delete from collections_tracks;
+delete from tracks;
+delete from albums;
+delete from collections;
