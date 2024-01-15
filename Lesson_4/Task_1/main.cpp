@@ -127,44 +127,48 @@ public:
             std::cout << "Enter id: ";
             std::cin >> id;
             std::cout << "Answer: " << std::endl;
-            for (auto [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE id = '" + transaction_1.esc(id) + "'" 
+            for (auto& [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE id = '" + transaction_1.esc(id) + "'" 
                 "LIMIT 1"))
             {
                 std::cout << email << " " << name << " " << lastname;
             }
+            break;
         }
         case 2:
         {
             std::cout << "Enter email: ";
             std::cin >> email;
             std::cout << "Answer: " << std::endl;
-            for (auto [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE email = '" + transaction_1.esc(email) + "'"
+            for (auto& [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE email = '" + transaction_1.esc(email) + "'"
                 "LIMIT 1"))
             {
                 std::cout << email << " " << name << " " << lastname;
             }
+            break;
         }
         case 3:
         {
             std::cout << "Enter name: ";
             std::cin >> name;
             std::cout << "Answer: " << std::endl;
-            for (auto [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE name = '" + transaction_1.esc(name) + "'"
+            for (auto& [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE name = '" + transaction_1.esc(name) + "'"
                 "LIMIT 1"))
             {
                 std::cout << email << " " << name << " " << lastname;
             }
+            break;
         }
         case 4:
         {
             std::cout << "Enter lastname: ";
             std::cin >> lastname;
             std::cout << "Answer: " << std::endl;
-            for (auto [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE lastname = '" + transaction_1.esc(lastname) + "'"
+            for (auto& [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE lastname = '" + transaction_1.esc(lastname) + "'"
                 "LIMIT 1"))
             {
                 std::cout << email << " " << name << " " << lastname;
             }
+            break;
         }
         case 5:
         {
@@ -173,11 +177,12 @@ public:
             std::cin >> telephone;
             temp = transaction_1.query_value<std::string>("SELECT id FROM ClientTelephone WHERE telephone = '" + transaction_1.esc(telephone) + "'");
             std::cout << "Answer: " << std::endl;
-            for (auto [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE id = '" + transaction_1.esc(temp) + "'"
+            for (auto& [email, name, lastname] : transaction_1.query<std::string, std::string, std::string>("SELECT email, name, lastname FROM ClientInfo WHERE id = '" + transaction_1.esc(temp) + "'"
                 "LIMIT 1"))
             {
                 std::cout << email << " " << name << " " << lastname;
             }
+            break;
         }
         }
     }
@@ -194,7 +199,7 @@ int main()
     {
         MyBase Base_1;
 
-       // Base_1.addTable();
+        //Base_1.addTable();
 
         //Base_1.addClient();
 
