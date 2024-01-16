@@ -195,20 +195,3 @@ int main()
 
     return 0;
 }
-
-
-
-
-/*
-
-using ResultType = std::tuple<Wt::Dbo::ptr<Stock>, Wt::Dbo::ptr<Book>>;
-
-ResultType query = session.query<ResultType>("select stock, book from stock").join<Book>("book", "book.id = stock.book_id").limit(1);
-
-std::cout << std::get<0>(query)->shop->name << " " << std::get<1>(query)->title << std::endl;
-}
-else
-{
-std::cout << "NOT FOUND" << std::endl;
-}
-*/
